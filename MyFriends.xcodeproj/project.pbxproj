@@ -11,6 +11,10 @@
 		199F98B02A54109100E2538B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199F98AF2A54109100E2538B /* ContentView.swift */; };
 		199F98B22A54109300E2538B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 199F98B12A54109300E2538B /* Assets.xcassets */; };
 		199F98B52A54109300E2538B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 199F98B42A54109300E2538B /* Preview Assets.xcassets */; };
+		199F98BD2A5411AD00E2538B /* ContactsDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 199F98BB2A5411AD00E2538B /* ContactsDataModel.xcdatamodeld */; };
+		199F98BF2A54152D00E2538B /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199F98BE2A54152D00E2538B /* Contact.swift */; };
+		199F98C32A541B0300E2538B /* ContactProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199F98C22A541B0300E2538B /* ContactProvider.swift */; };
+		199F98C52A54224700E2538B /* ContactRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199F98C42A54224700E2538B /* ContactRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		199F98AF2A54109100E2538B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		199F98B12A54109300E2538B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		199F98B42A54109300E2538B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		199F98BC2A5411AD00E2538B /* ContactsDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ContactsDataModel.xcdatamodel; sourceTree = "<group>"; };
+		199F98BE2A54152D00E2538B /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		199F98C22A541B0300E2538B /* ContactProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactProvider.swift; sourceTree = "<group>"; };
+		199F98C42A54224700E2538B /* ContactRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +43,7 @@
 		199F98A12A54109100E2538B = {
 			isa = PBXGroup;
 			children = (
+				199F98BB2A5411AD00E2538B /* ContactsDataModel.xcdatamodeld */,
 				199F98AC2A54109100E2538B /* MyFriends */,
 				199F98AB2A54109100E2538B /* Products */,
 			);
@@ -51,8 +60,11 @@
 		199F98AC2A54109100E2538B /* MyFriends */ = {
 			isa = PBXGroup;
 			children = (
+				199F98C12A541AD900E2538B /* Provider */,
+				199F98C02A5415A700E2538B /* Model */,
 				199F98AD2A54109100E2538B /* MyFriendsApp.swift */,
 				199F98AF2A54109100E2538B /* ContentView.swift */,
+				199F98C42A54224700E2538B /* ContactRowView.swift */,
 				199F98B12A54109300E2538B /* Assets.xcassets */,
 				199F98B32A54109300E2538B /* Preview Content */,
 			);
@@ -65,6 +77,22 @@
 				199F98B42A54109300E2538B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		199F98C02A5415A700E2538B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				199F98BE2A54152D00E2538B /* Contact.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		199F98C12A541AD900E2538B /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				199F98C22A541B0300E2538B /* ContactProvider.swift */,
+			);
+			path = Provider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +165,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				199F98BF2A54152D00E2538B /* Contact.swift in Sources */,
+				199F98C32A541B0300E2538B /* ContactProvider.swift in Sources */,
+				199F98BD2A5411AD00E2538B /* ContactsDataModel.xcdatamodeld in Sources */,
 				199F98B02A54109100E2538B /* ContentView.swift in Sources */,
+				199F98C52A54224700E2538B /* ContactRowView.swift in Sources */,
 				199F98AE2A54109100E2538B /* MyFriendsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +371,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		199F98BB2A5411AD00E2538B /* ContactsDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				199F98BC2A5411AD00E2538B /* ContactsDataModel.xcdatamodel */,
+			);
+			currentVersion = 199F98BC2A5411AD00E2538B /* ContactsDataModel.xcdatamodel */;
+			path = ContactsDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 199F98A22A54109100E2538B /* Project object */;
 }
