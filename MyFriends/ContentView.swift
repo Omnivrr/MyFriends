@@ -8,14 +8,40 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isShowingNewContact = false
+    var provider = ContactProvider.shared
+    
+    
     var body: some View {
         NavigationStack {
             List {
                 ForEach((0...10), id: \.self) { item in
-                    ContactRowView()
-
+                    ZStack(alignment: .leading) {
+                        NavigationLink(destination:  ContactDetailView()) {
+                            EmptyView()
+                        }
+                        .opacity(0)
+                        ContactRowView()
+                    }
                 }
-            }.navigationTitle("Contacts")
+            }
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
+                        isShowingNewContact.toggle()
+                    } label: {
+                        Image(systemName: "person.crop.circle.badge.plus")
+                       
+                    }
+                }
+            }
+            .sheet(isPresented: $isShowingNewContact) {
+                NavigationStack {
+                    CreateContactView()
+                }
+            }
+
+            .navigationTitle("Contacts")
         }
     }
 }

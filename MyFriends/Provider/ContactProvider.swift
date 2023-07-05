@@ -11,7 +11,12 @@ import CoreData
 final class ContactProvider {
     
     static let shared = ContactProvider()
+    
     private let persistentContainer: NSPersistentContainer
+    
+    var viewContext: NSManagedObjectContext {
+        persistentContainer.viewContext
+    }
     
     var newContext: NSManagedObjectContext {
         let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
