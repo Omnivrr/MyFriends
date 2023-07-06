@@ -16,13 +16,11 @@ final class ContactProvider {
     
     var viewContext: NSManagedObjectContext {
         persistentContainer.viewContext
+        
     }
     
     var newContext: NSManagedObjectContext {
-        let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        context.persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator
-        return context
-        
+        persistentContainer.newBackgroundContext()
     }
     
     private init() {

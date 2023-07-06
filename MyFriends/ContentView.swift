@@ -37,7 +37,7 @@ struct ContentView: View {
             }
             .sheet(isPresented: $isShowingNewContact) {
                 NavigationStack {
-                    CreateContactView()
+                    CreateContactView(vm: .init(provider: provider))
                 }
             }
 

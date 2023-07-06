@@ -7,28 +7,35 @@
 import SwiftUI
 
 struct CreateContactView: View {
+    
+    
     @Environment(\.dismiss) private var dismiss
+    @ObservedObject var vm: EditContactViewModel
     
     var body: some View {
         List {
-            Section("General") {
-                TextField("Name", text: .constant(""))
-                    .keyboardType(.namePhonePad)
+            
+                Section("General") {
                 
-                TextField("Email", text: .constant(""))
+                
+                    TextField("Name", text: $vm.contact.name)
+                                         .keyboardType(.namePhonePad)
+                
+                TextField("Email", text: $vm.contact.email)
                     .keyboardType(.phonePad)
                 
-                DatePicker("Birthday", selection: .constant(.now),
-                           displayedComponents: [.date])
-                .datePickerStyle(.compact)
+                TextField("Phone Number", text: $vm.contact.phoneNumber)
                 
-                Toggle("Favourite", isOn: .constant(true))
+                    DatePicker("Birthday", selection: $vm.contact.dob,
+                           displayedComponents: [.date])
+                      .datePickerStyle(.compact)
+                
+                    Toggle("Favourite", isOn: $vm.contact.isFavourite)
             }
             
+            
             Section("Notes") {
-                
-                
-                TextField("", text: .constant("This is a note, it's all blaa blaa blaa"),
+                TextField("", text: $vm.contact.notes,
                           axis: .vertical)
             }
         }
@@ -36,13 +43,19 @@ struct CreateContactView: View {
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Done") {
-                    dismiss()
+                    do {
+                        try vm.save()
+                        dismiss()
+                    } catch {
+                        print(error)
+                    }
                 }
             }
             
             ToolbarItem(placement: .navigationBarLeading) {
                 Button("Cancel"){
                     dismiss()
+                    
                 }
             }
         }
@@ -52,7 +65,7 @@ struct CreateContactView: View {
 struct CreateContactView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            CreateContactView()
+            CreateContactView(vm: .init(provider: .shared))
         }
     }
 }
