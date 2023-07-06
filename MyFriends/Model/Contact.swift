@@ -11,10 +11,10 @@ import CoreData
 final class Contact: NSManagedObject {
     
     @NSManaged var dob: Date
-    @NSManaged var namme: String
+    @NSManaged var name: String
     @NSManaged var notes: String
-    @NSManaged var phoneNUmber: String
-    @NSManaged var emaiil: String
+    @NSManaged var phoneNumber: String
+    @NSManaged var email: String
     @NSManaged var isFavourite: Bool
     
     override func awakeFromInsert() {
@@ -23,4 +23,15 @@ final class Contact: NSManagedObject {
         setPrimitiveValue(false, forKey: "isFavourite")
     }
     
+}
+extension Contact {
+    private static var contactsFetchRequest: NSFetchRequest<Contact> {
+        NSFetchRequest(entityName: "Contact")
+    }
+    
+    static func all() -> NSFetchRequest<Contact> {
+        let request: NSFetchRequest<Contact> = contactsFetchRequest
+        request.sortDescriptors = [ NSSortDescriptor(keyPath: \Contact.name, ascending: true)]
+        return request
+    }
 }
