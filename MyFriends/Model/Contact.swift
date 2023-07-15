@@ -43,3 +43,23 @@ extension Contact {
         return request
     }
 }
+
+extension Contact {
+    @discardableResult
+    func makePreview(count: Int, in context: NSManagedObjectContext) -> [Contact] {
+        var contacts = [Contact]()
+        for i in 0..<count {
+            let contact = Contact(context: context)
+            contact.name = "item\(i)"
+            contact.email = "test_\(i)@email.com"
+            contact.isFavourite = Bool.random()
+            contact.phoneNumber = "07000000000\(i)"
+            contact.dob = Calendar.current.date(byAdding: .day,
+                                                value: -i,
+                                                to: .now) ?? .now
+            contact.notes = "This is a preview for item\(i)"
+            contacts.append(contact)
+        }
+        return contacts
+    }
+}
