@@ -46,7 +46,7 @@ extension Contact {
 
 extension Contact {
     @discardableResult
-    func makePreview(count: Int, in context: NSManagedObjectContext) -> [Contact] {
+    static func makePreview(count: Int, in context: NSManagedObjectContext) -> [Contact] {
         var contacts = [Contact]()
         for i in 0..<count {
             let contact = Contact(context: context)
@@ -61,5 +61,12 @@ extension Contact {
             contacts.append(contact)
         }
         return contacts
+    }
+ static func preview(context: NSManagedObjectContext = ContactProvider.shared.viewContext) ->  Contact {
+        return makePreview(count: 1, in: context)[0]
+    }
+    
+   static func empty(context: NSManagedObjectContext = ContactProvider.shared.viewContext) ->  Contact {
+        return Contact(context: context)
     }
 }

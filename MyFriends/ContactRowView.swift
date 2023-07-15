@@ -52,9 +52,9 @@ private extension ContactRowView {
         }
     }
 }
-/*struct ContactRowView_Previews: PreviewProvider {
+struct ContactRowView_Previews: PreviewProvider {
  static var previews: some View {
- ContactRowView()
+     ContactRowView(contact: .preview())
  }
  }
- */
+
