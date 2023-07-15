@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ContactRowView: View {
+    @Environment(\.managedObjectContext) private var moc
     
-    let contact: Contact
+    @ObservedObject var contact: Contact
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -27,18 +28,30 @@ struct ContactRowView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .overlay(alignment: .topTrailing ){
             Button {
-                //TODO: Handle Favourite Logic
+                toggleFave()
             } label: {
                 Image(systemName: "star")
                     .font(.title3)
                     .symbolVariant(.fill)
-                    .foregroundColor(.gray.opacity(0.3))
+                    .foregroundColor(contact.isFavourite ? .yellow : .gray.opacity(0.3))
             }
             .buttonStyle(.plain)
         }
     }
 }
 
+private extension ContactRowView {
+    func toggleFave() {
+        contact.isFavourite.toggle()
+        do {
+            if moc.hasChanges {
+                try moc.save()
+            }
+        } catch {
+            print(error)
+        }
+    }
+}
 /*struct ContactRowView_Previews: PreviewProvider {
  static var previews: some View {
  ContactRowView()

@@ -23,7 +23,7 @@ struct ContentView: View {
                             EmptyView()
                         }
                         .opacity(0)
-                        ContactRowView()
+                        ContactRowView(contact: contact)
                     }
                 }
             }
