@@ -12,7 +12,7 @@ struct MyFriendsApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, ContactProvider.shared.newContext)
+                .environment(\.managedObjectContext, ContactProvider.shared.viewContext)
         }
     }
 }
